@@ -19,7 +19,7 @@ app.listen(PORT, ()=>{
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://propertysellingbackend.onrender.com', // Allow only your frontend to access
+    origin: 'http://localhost:5173/', // Allow only your frontend to access
     credentials: true // Allow cookies to be sent
 }));
 //database connection
