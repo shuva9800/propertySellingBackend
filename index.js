@@ -18,10 +18,12 @@ app.listen(PORT, ()=>{
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: 'http://localhost:5173/', // Allow only your frontend to access
-    credentials: true // Allow cookies to be sent
-}));
+// app.use(cors({
+//     origin: 'http://localhost:5173/', // Allow only your frontend to access
+//     credentials: true // Allow cookies to be sent
+// }));
+app.use(cors());
+
 //database connection
 dbconnect();
 //cloudinary connection
