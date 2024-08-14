@@ -17,7 +17,10 @@ app.listen(PORT, ()=>{
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', //  frontend URL
+    credentials: true // Allow credentials (cookies)
+}));
 
 //database connection
 dbconnect();
