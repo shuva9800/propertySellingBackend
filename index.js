@@ -5,7 +5,6 @@ const dotenv= require("dotenv");
 const signupRouter = require('./routes/userrouter');
 const cookieParser = require('cookie-parser');
 const cloudinary = require('./config/cloudinaryUpload');
-const fileUpload = require('express-fileupload');
 const listingRouter = require('./routes/listing.route')
 const cors = require('cors')
 
@@ -18,22 +17,12 @@ app.listen(PORT, ()=>{
 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({
-//     origin: 'http://localhost:5173/', // Allow only your frontend to access
-//     credentials: true // Allow cookies to be sent
-// }));
+
 app.use(cors());
 
 //database connection
 dbconnect();
 //cloudinary connection
-cloudinary();
-app.use(fileUpload(
-    {
-        useTempFiles : true,
-        tempFileDir : '/tmp/'
-    }
-));
 
 
 app.get("/", (req,res)=>{
