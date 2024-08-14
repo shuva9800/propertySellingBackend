@@ -4,7 +4,6 @@ const {dbconnect} = require("./config/database");
 const dotenv= require("dotenv");
 const signupRouter = require('./routes/userrouter');
 const cookieParser = require('cookie-parser');
-const cloudinary = require('./config/cloudinaryUpload');
 const listingRouter = require('./routes/listing.route')
 const cors = require('cors')
 
