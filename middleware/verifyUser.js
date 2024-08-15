@@ -3,7 +3,8 @@ require("dotenv").config()
 
 exports.checkAuthentication = async (req,res,next)=>{
 try{
-    const token = req.body.token || req.cookies.loginToken;
+    const token = req.body.token || req.cookies.loginToken || req.headers.authorization?.split(" ")[1];
+    console.log(token)
     if(!token || token===undefined){
         return res.status(401).json({
             success: false,

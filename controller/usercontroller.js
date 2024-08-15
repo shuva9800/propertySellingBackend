@@ -75,10 +75,10 @@ exports.loginHandler = async (req,res)=>{
         person.password = "undefined";
         
         return res.cookie("loginToken",token,{
-                httpOnly: true,
-                secure: true,
-                sameSite: 'None',
-                expires: new Date(Date.now() + 24*60*60*1000 )
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production', // Only set `secure: true` in production
+          sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // Use `None` for cross-site cookies in production
+          expires: new Date(Date.now() + 24 * 60 * 60 * 1000) // Cookie expires in 1 day)
         }, ).status(200).json({
             success: true,
             message: "user login successfully",
