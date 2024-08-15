@@ -17,10 +17,23 @@ app.listen(PORT, ()=>{
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({
-    origin: 'https://master--mernstack-realestate.netlify.app', 
-    credentials: true 
-}));
+const allowedOrigins = [
+    'https://mernstack-realestate.netlify.app', // Your frontend production URL
+   // Ensure you add this if you're using branches
+  ];
+  
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // Allow cookies to be sent with requests
+  };
+  
+  app.use(cors(corsOptions));
 
 //database connection
 dbconnect();
