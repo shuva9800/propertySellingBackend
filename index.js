@@ -18,13 +18,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: 'http://localhost:5173', //  frontend URL
-    credentials: true // Allow credentials (cookies)
+    origin: 'http://localhost:5173', 
+    credentials: true 
 }));
 
 //database connection
 dbconnect();
-//cloudinary connection
 
 
 app.get("/", (req,res)=>{
